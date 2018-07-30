@@ -50,5 +50,7 @@ User.pre('save', function(next) {
     });
 })
 
+//genSalt & hash are both async fns 
+
 module.exports = mongoose.model('User', User);
 //exports model and schema

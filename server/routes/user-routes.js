@@ -29,7 +29,7 @@ router.post('/register', (req, res) => {
     })
 });
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
     const { username, password } = req.body;
     User.findOne({username})
     .then((user) => {

@@ -44,7 +44,8 @@ router.get('/login', (req, res) => {
                 return res.status(401).send();
             }
 
-            jwt.sign({_id: user._id})
+            let token = jwt.sign({_id: user._id}, 'secret');
+            return res.status(201).send({token});
         })
         .catch(err => {
             return res.status(401).semd({error: err});

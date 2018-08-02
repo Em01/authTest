@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import Input from '../Components/Input/Input'
 import CustomButton from '../Components/Button/Button'
-
+import TextButton from '../Components/TextButton/TextButton'
 export default class App extends Component {
 
   static navigatorStyle = {
@@ -17,7 +17,11 @@ export default class App extends Component {
           <Input placeholder="Username" />
           <Input placeholder="Password" secureTextEntry />
         </View>
-        <CustomButton />
+
+        <View style={styles.buttonContainer}>
+          <CustomButton />
+          <TextButton />
+        </View>
       </View>
     );
   }
@@ -40,5 +44,11 @@ const styles = StyleSheet.create({
     width: 100,
     marginTop: '35%',
     marginBottom: '25%'
+  },
+
+  buttonContainer: {
+    alignItems: 'center',
+    height: 150,
+    justifyContent: 'space-around'
   }
 });

@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('./db/mongoose');
 const userRoutes = require('./routes/user-routes');
 const bodyParser = require('body-parser');
+const private = require('./routes/private');
 
 app.use(bodyParser.json());
 
@@ -18,12 +19,12 @@ app.use(bodyParser.json());
 // let compare = bcrypt.compareSync(password, hashedPassword);
 // console.log(compare, 'compare');
 
-app.get('/', (req, res) => {
-    res.send('Welcome')
-});
+// app.get('/', (req, res) => {
+//     res.send('Welcome')
+// });
 
 app.use('/user', userRoutes);
-
+app.use('/private', private);
 const PORT = process.env.PORT || 3000;
 
 app.listen(3000, () => console.log(`Server started on: ${PORT}`));

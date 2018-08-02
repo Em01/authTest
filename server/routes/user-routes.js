@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../db/models/user-model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { secret } = require('../config');
 
 router.post('/register', (req, res) => {
     const { email, password, username } = req.body
@@ -44,8 +45,8 @@ router.post('/login', (req, res) => {
                 return res.status(401).send();
             }
 
-            let token = jwt.sign({_id: user._id}, 'secret');
-            return res.status(201).send({token});
+            let token = jwt.sign({_id: user._id}, secret);
+            return res.status(201).header('x-auth', token).send({token});
         })
         .catch(err => {
             return res.status(401).semd({error: err});

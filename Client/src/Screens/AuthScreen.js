@@ -9,18 +9,54 @@ export default class App extends Component {
     navBarHidden: true
   }
 
+  state = {
+    username: '',
+    password: ''
+  }
+
+  handlePushScreen = () => {
+    this.props.navigator.push({
+      screen: 'Client.CreateAnAccount'
+    })
+  }
+
+  handleChangeUsername = test => {
+    this.setState(() => {
+      return {
+        username: text
+      }
+    })
+  }
+
+  handleChangePassword = test => {
+    this.setState(() => {
+      return {
+        password: text
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Image source={require('../../assets/images/logo.png')} style={styles.image}/>
         <View style={styles.formContainer}>
-          <Input placeholder="Username" />
-          <Input placeholder="Password" secureTextEntry />
+          <Input
+            placeholder="Username"
+            value={this.state.username}
+            onChangeText={this.handleChangeUsername}
+          />
+          <Input
+            placeholder="Password"
+            secureTextEntry
+            value={this.state.password}
+            onChangeText={this.handleChangePassword}
+          />
         </View>
 
         <View style={styles.buttonContainer}>
           <CustomButton />
-          <TextButton />
+          <TextButton onPress={this.handlePushScreen}/>
         </View>
       </View>
     );

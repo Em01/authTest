@@ -16,7 +16,8 @@ export default class App extends Component {
 
   handlePushScreen = () => {
     this.props.navigator.push({
-      screen: 'Client.CreateAnAccount'
+      screen: 'Client.CreateAnAccount',
+      title: 'Sign Up'
     })
   }
 
@@ -55,8 +56,8 @@ export default class App extends Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <CustomButton />
-          <TextButton onPress={this.handlePushScreen}/>
+          <CustomButton text="Sign In"/>
+          <TextButton onPress={this.handlePushScreen} text={"Sign Up"}/>
         </View>
       </View>
     );

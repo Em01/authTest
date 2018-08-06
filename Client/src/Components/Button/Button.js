@@ -8,7 +8,7 @@ class CustomButton extends Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.buttonContainer} {...this.props}>
                 <Text style={styles.buttonText}>{this.props.text}</Text>
             </TouchableOpacity>
         )

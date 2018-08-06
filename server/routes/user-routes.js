@@ -19,13 +19,16 @@ router.post('/register', (req, res) => {
     .then((user) => {
         if(!user) {
             return res.status(400).send();
+            console.log('user not saved')
         }
         return res.status(201).send(user);
     })
     .catch(err => {
         if(err) {
+            console.log(err)
             return res.status(400).send({error:err});
         }
+        console.log('error')
         return res.status(400).send();
     })
 });
